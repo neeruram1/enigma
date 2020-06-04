@@ -20,21 +20,30 @@ class EnigmaTest < Minitest::Test
     expected1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," "]
     assert_equal expected, @enigma.numbers
     assert_equal expected1, @enigma.alphabet
-    assert_equal [], @enigma.key
   end
 
   def test_it_can_encrypt
+    message = mock("encrypted message")
     expected = {
-              encryption: "keder ohulw",
+              encryption: message,
               key: "02715",
               date: "040895"
     }
-    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+    assert_equal expected, @enigma.encrypt(message, "02715", "040895")
   end
 
-  def test_it_can_randomize_key
+  def test_it_can_randomize_key_by_default
     @enigma.stubs(:randomize_key).returns("34573")
 
-    assert_equal "34573", @enigma.encrypt("hello world", "040895")[:key]
+    assert_equal "34573", @enigma.encrypt("hello world")[:key]
+  end
+
+  def test_it_can_generate_todays_date
+    assert_equal "030620", @enigma.create_date
+  end
+
+  def test_it_has_default_date
+    @enigma.stubs(:create_date).returns("030620")
+    assert_equal "030620", @enigma.encrypt("hello world")[:date]
   end
 end
