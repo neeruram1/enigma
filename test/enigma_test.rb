@@ -32,7 +32,7 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.encrypt(message, "02715", "040895")
   end
 
-  def test_it_can_randomize_key_by_default
+  def test_it_can_randomize_key_default_key
     @enigma.stubs(:randomize_key).returns("34573")
 
     assert_equal "34573", @enigma.encrypt("hello world")[:key]
@@ -45,5 +45,10 @@ class EnigmaTest < Minitest::Test
   def test_it_has_default_date
     @enigma.stubs(:create_date).returns("030620")
     assert_equal "030620", @enigma.encrypt("hello world")[:date]
+  end
+
+  def test_it_has_shift_start_positions
+    expected = {A: 1, B: 2, C: 3, D: 4}
+    assert_equal expected, @enigma.shift
   end
 end

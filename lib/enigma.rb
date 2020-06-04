@@ -23,4 +23,8 @@ class Enigma
   def create_date
     @date = Date.today.strftime("%d%m%y")
   end
+
+  def shift
+    {A: 1, B: 2, C: 3, D: 4}
+  end
 end
