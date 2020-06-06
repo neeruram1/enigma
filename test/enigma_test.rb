@@ -47,14 +47,10 @@ class EnigmaTest < Minitest::Test
     assert_equal "030620", @enigma.encrypt("hello world")[:date]
   end
 
-  def test_it_has_shift_start_positions
-    expected = {A: 1, B: 2, C: 3, D: 4}
-    assert_equal expected, @enigma.shift
-  end
-
-  def test_it_can_convert_key_to_integer
+  def test_it_can_split_key_into_pairs
     @enigma.encrypt(message, "34753", "030620")
+    expected = [34, 47, 75, 53]
 
-    assert_equal 34753, @enigma.convert_key_to_integer
+    assert_equal expected, @enigma.split_key
   end
 end
