@@ -66,4 +66,11 @@ class Enigma
                 D: split_key[3]
               }
   end
+
+  #shift method
+  def shift_values
+    @shifts = keys_by_shift.merge(offsets_by_shift) do |shift,key_value,offset_value| 
+      key_value + offset_value
+    end
+  end
 end
