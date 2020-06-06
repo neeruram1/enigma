@@ -14,10 +14,34 @@ class Enigma
     {encryption: message, key: key, date: date}
   end
 
+#offsets method
   def create_date
     @date = Date.today.strftime("%d%m%y")
   end
 
+#offsets method
+  def square_date
+    @date.to_i.pow(2).to_s
+  end
+
+#offsets method
+  def split_offset
+    char = []
+    square_date.each_char {|c| char << c.to_i}
+    char.last(4)
+  end
+
+#offsets method
+  def offsets_by_shift
+    @offset_pairs = {
+                A: split_offset[0],
+                B: split_offset[1],
+                C: split_offset[2],
+                D: split_offset[3]
+              }
+  end
+
+#key method
   def randomize_key
     @key = []
     5.times do
@@ -26,13 +50,15 @@ class Enigma
     @key.join
   end
 
+#key method
   def split_key
     char = []
     @key.each_char {|c| char << c}
     char.each_cons(2).map {|a,b| (a + b).to_i}
   end
 
-  def group_keys_by_shift
+#key method
+  def keys_by_shift
     @key_pairs = {
                 A: split_key[0],
                 B: split_key[1],
