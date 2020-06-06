@@ -16,7 +16,7 @@ class Enigma
 
 #offsets method
   def create_date
-    date = Date.today.strftime("%d%m%y")
+    Date.today.strftime("%d%m%y")
   end
 
 #offsets method
@@ -101,13 +101,13 @@ class Enigma
 
     message = start_positions
     message.map do |position, character|
-      if (position + 4) % 4 == 1
+      if @alphabet.include?(message[position]) && (position + 4) % 4 == 1
         message[position] = a_shift_alpha[character]
-      elsif (position + 4) % 4 == 2
+      elsif @alphabet.include?(message[position]) && (position + 4) % 4 == 2
         message[position] = b_shift_alpha[character]
-      elsif (position + 4) % 4 == 3
+      elsif @alphabet.include?(message[position]) && (position + 4) % 4 == 3
         message[position] = c_shift_alpha[character]
-      elsif (position + 4) % 4 == 0
+      elsif @alphabet.include?(message[position]) && (position + 4) % 4 == 0
         message[position] = d_shift_alpha[character]
       end
     end
