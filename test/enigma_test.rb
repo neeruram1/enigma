@@ -86,4 +86,15 @@ class EnigmaTest < Minitest::Test
             }
     assert_equal expected, @enigma.offsets_by_shift
   end
+
+  def test_it_can_create_shift_values
+    @enigma.encrypt(message, "34753", "030620")
+    expected = {
+              A: 38,
+              B: 51,
+              C: 75,
+              D: 53
+            }
+    assert_equal expected, @enigma.shift_values
+  end
 end
