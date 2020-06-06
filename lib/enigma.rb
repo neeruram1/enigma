@@ -86,4 +86,31 @@ class Enigma
     positions
   end
 
+  def encode
+    a_rotated_alphabet = @alphabet.rotate(shift_values[:A])
+    a_shift_alpha = Hash[@alphabet.zip a_rotated_alphabet]
+
+    b_rotated_alphabet = @alphabet.rotate(shift_values[:B])
+    b_shift_alpha = Hash[@alphabet.zip b_rotated_alphabet]
+
+    c_rotated_alphabet = @alphabet.rotate(shift_values[:C])
+    c_shift_alpha = Hash[@alphabet.zip c_rotated_alphabet]
+
+    d_rotated_alphabet = @alphabet.rotate(shift_values[:D])
+    d_shift_alpha = Hash[@alphabet.zip d_rotated_alphabet]
+
+    message = start_positions
+    message.map do |position, character|
+      if (position + 4) % 4 == 1
+        message[position] = a_shift_alpha[character]
+      elsif (position + 4) % 4 == 2
+        message[position] = b_shift_alpha[character]
+      elsif (position + 4) % 4 == 3
+        message[position] = c_shift_alpha[character]
+      elsif (position + 4) % 4 == 0
+        message[position] = d_shift_alpha[character]
+      end
+    end
+    message.values.join
+  end
 end

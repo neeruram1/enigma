@@ -132,29 +132,9 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.start_positions
   end
 
-  def test_it_can_assign_shift_value
-    @enigma.encrypt("HELLO WORLD", "02715", "040895")
-    expected = {
-              1 => "h",
-              2 => "e",
-              3 => "l",
-              4 => "l",
-              5 => "o",
-              6 => " ",
-              7 => "w",
-              8 => "o",
-              9 => "r",
-              10 => "l",
-              11 => "d"
-            }
-
-  end
-
-  def test_it_can_encode_characters
-    skip
+  def test_it_can_encode_message
     @enigma.encrypt("HELLO WORLD", "02715", "040895")
     expected = "keder ohulw"
-
     assert_equal expected, @enigma.encode
   end
 end
