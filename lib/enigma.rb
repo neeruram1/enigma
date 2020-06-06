@@ -31,6 +31,16 @@ class Enigma
     char.last(4)
   end
 
+#offsets method
+  def offsets_by_shift
+    @offset_pairs = {
+                A: split_offset[0],
+                B: split_offset[1],
+                C: split_offset[2],
+                D: split_offset[3]
+              }
+  end
+
 #key method
   def randomize_key
     @key = []

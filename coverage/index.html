@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-06-06T11:12:47-06:00">2020-06-06T11:12:47-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-06-06T11:14:56-06:00">2020-06-06T11:14:56-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.9
+         6.32
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>29</b> relevant lines,
-    <span class="green"><b>29</b> lines covered</span> and
+    <b>31</b> relevant lines,
+    <span class="green"><b>31</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#4361b2167c5cd3802de98ff9091911d6e174075a" class="src_link" title="lib/enigma.rb">lib/enigma.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">58</td>
-            <td class="cell--number">29</td>
-            <td class="cell--number">29</td>
+            <td class="cell--number">69</td>
+            <td class="cell--number">31</td>
+            <td class="cell--number">31</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.90</td>
+            <td class="cell--number">6.32</td>
             
           </tr>
         
@@ -112,8 +112,8 @@
     
 
     <div class="t-line-summary">
-      <b>29</b> relevant lines.
-      <span class="green"><b>29</b> lines covered</span> and
+      <b>31</b> relevant lines.
+      <span class="green"><b>31</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -378,8 +378,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="24">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="6" data-linenumber="24">
+            <span class="hits">6</span>
             
 
             
@@ -411,13 +411,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="27">
+            
             
 
             
 
-            <code class="ruby">  def split_offset</code>
+            <code class="ruby">#offsets method</code>
           </li>
         </div>
       
@@ -428,13 +428,24 @@
 
             
 
+            <code class="ruby">  def split_offset</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="29">
+            <span class="hits">5</span>
+            
+
+            
+
             <code class="ruby">    char = []</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="10" data-linenumber="29">
-            <span class="hits">10</span>
+          <li class="covered" data-hits="50" data-linenumber="30">
+            <span class="hits">50</span>
             
 
             
@@ -444,24 +455,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="30">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="5" data-linenumber="31">
+            <span class="hits">5</span>
             
 
             
 
             <code class="ruby">    char.last(4)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -472,7 +472,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -483,18 +483,18 @@
 
             
 
-            <code class="ruby">#key method</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="34">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="34">
+            
             
 
             
 
-            <code class="ruby">  def randomize_key</code>
+            <code class="ruby">#offsets method</code>
           </li>
         </div>
       
@@ -505,29 +505,29 @@
 
             
 
-            <code class="ruby">    @key = []</code>
+            <code class="ruby">  def offsets_by_shift</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
+          <li class="never" data-hits="" data-linenumber="36">
+            
+            
+
+            
+
+            <code class="ruby">    @offset_pairs = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="37">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    5.times do</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="37">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">      @key &lt;&lt; @numbers.sample</code>
+            <code class="ruby">                A: split_offset[0],</code>
           </li>
         </div>
       
@@ -538,18 +538,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">                B: split_offset[1],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="39">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="39">
+            
             
 
             
 
-            <code class="ruby">    @key.join</code>
+            <code class="ruby">                C: split_offset[2],</code>
           </li>
         </div>
       
@@ -560,7 +560,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">                D: split_offset[3]</code>
           </li>
         </div>
       
@@ -571,7 +571,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">              }</code>
           </li>
         </div>
       
@@ -582,67 +582,12 @@
 
             
 
-            <code class="ruby">#key method</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def split_key</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="44">
-            <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    char = []</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="30" data-linenumber="45">
-            <span class="hits">30</span>
-            
-
-            
-
-            <code class="ruby">    @key.each_char {|c| char &lt;&lt; c}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="25" data-linenumber="46">
-            <span class="hits">25</span>
-            
-
-            
-
-            <code class="ruby">    char.each_cons(2).map {|a,b| (a + b).to_i}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="47">
-            
-            
-
-            
-
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="43">
             
             
 
@@ -653,7 +598,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="44">
             
             
 
@@ -664,13 +609,68 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def randomize_key</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="46">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    @key = []</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    5.times do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="48">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">      @key &lt;&lt; @numbers.sample</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="50">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def keys_by_shift</code>
+            <code class="ruby">    @key.join</code>
           </li>
         </div>
       
@@ -681,18 +681,18 @@
 
             
 
-            <code class="ruby">    @key_pairs = {</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="52">
+            
             
 
             
 
-            <code class="ruby">                A: split_key[0],</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -703,45 +703,56 @@
 
             
 
-            <code class="ruby">                B: split_key[1],</code>
+            <code class="ruby">#key method</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="54">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="54">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">                C: split_key[2],</code>
+            
+
+            <code class="ruby">  def split_key</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
+          <li class="covered" data-hits="5" data-linenumber="55">
+            <span class="hits">5</span>
             
 
-            <code class="ruby">                D: split_key[3]</code>
+            
+
+            <code class="ruby">    char = []</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="56">
-            
-            
-
+          <li class="covered" data-hits="30" data-linenumber="56">
+            <span class="hits">30</span>
             
 
-            <code class="ruby">              }</code>
+            
+
+            <code class="ruby">    @key.each_char {|c| char &lt;&lt; c}</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="57">
+          <li class="covered" data-hits="25" data-linenumber="57">
+            <span class="hits">25</span>
+            
+
+            
+
+            <code class="ruby">    char.each_cons(2).map {|a,b| (a + b).to_i}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="58">
             
             
 
@@ -752,7 +763,117 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="59">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">#key method</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def keys_by_shift</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">    @key_pairs = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="63">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">                A: split_key[0],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">                B: split_key[1],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">                C: split_key[2],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby">                D: split_key[3]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">              }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
             
             
 
