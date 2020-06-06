@@ -29,6 +29,16 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
 
+  def test_it_can_decrypt
+    enigma = Enigma.new
+    expected = {
+              decryption: "hello world",
+              key: "02715",
+              date: "040895"
+            }
+    assert_equal expected, enigma.decrypt("keder ohulw", "02715", "040895")
+  end
+
   def test_it_can_randomize_key_default_key
     enigma = Enigma.new
     enigma.stubs(:randomize_key).returns("34573")
@@ -151,5 +161,12 @@ class EnigmaTest < Minitest::Test
     enigma.encrypt("HELLO WORLD!", "02715", "040895")
     expected = "keder ohulw!"
     assert_equal expected, enigma.encode
+  end
+
+  def test_it_can_decode
+    enigma = Enigma.new
+    enigma.encrypt("keder ohulw!", "02715", "040895")
+    expected = "hello world!"
+    assert_equal expected, enigma.decode
   end
 end
