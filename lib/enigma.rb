@@ -33,12 +33,11 @@ class Enigma
   end
 
   def group_keys_by_shift
-    key_pairs = {
+    @key_pairs = {
                 A: split_key[0],
                 B: split_key[1],
                 C: split_key[2],
                 D: split_key[3]
               }
   end
-
 end
