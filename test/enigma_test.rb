@@ -62,6 +62,28 @@ class EnigmaTest < Minitest::Test
               C: 75,
               D: 53
             }
-    assert_equal expected, @enigma.group_keys_by_shift
+    assert_equal expected, @enigma.keys_by_shift
+  end
+
+  def test_it_can_square_date
+    @enigma.encrypt(message, "34753", "030620")
+    assert_equal "937584400", @enigma.square_date
+  end
+
+  def test_it_can_return_last_four_digits_offset
+    @enigma.encrypt(message, "34753", "030620")
+    expected = [4, 4, 0, 0]
+    assert_equal expected, @enigma.split_offset
+  end
+
+  def test_it_can_group_offsets_by_shift
+    @enigma.encrypt(message, "34753", "030620")
+    expected = {
+              A: 4,
+              B: 4,
+              C: 0,
+              D: 0
+            }
+    assert_equal expected, @enigma.offsets_by_shift
   end
 end
