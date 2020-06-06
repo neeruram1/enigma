@@ -28,7 +28,7 @@ class EnigmaTest < Minitest::Test
               encryption: message,
               key: "02715",
               date: "040895"
-    }
+            }
     assert_equal expected, @enigma.encrypt(message, "02715", "040895")
   end
 
@@ -52,5 +52,16 @@ class EnigmaTest < Minitest::Test
     expected = [34, 47, 75, 53]
 
     assert_equal expected, @enigma.split_key
+  end
+
+  def test_it_can_group_key_pairs_by_shift
+    @enigma.encrypt(message, "34753", "030620")
+    expected = {
+              A: 34,
+              B: 47,
+              C: 75,
+              D: 53
+            }
+    assert_equal expected, @enigma.group_keys_by_shift
   end
 end

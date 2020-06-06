@@ -7,7 +7,7 @@ class Enigma
     @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @alphabet = ("a".."z").to_a << " "
   end
-  
+
   def encrypt(message, key = randomize_key, date = create_date)
     @key = key
     @date = date
@@ -30,6 +30,15 @@ class Enigma
     char = []
     @key.each_char {|c| char << c}
     char.each_cons(2).map {|a,b| (a + b).to_i}
+  end
+
+  def group_keys_by_shift
+    key_pairs = {
+                A: split_key[0],
+                B: split_key[1],
+                C: split_key[2],
+                D: split_key[3]
+              }
   end
 
 end
