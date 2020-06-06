@@ -28,7 +28,7 @@ class EnigmaTest < Minitest::Test
               encryption: message,
               key: "02715",
               date: "040895"
-    }
+            }
     assert_equal expected, @enigma.encrypt(message, "02715", "040895")
   end
 
@@ -39,7 +39,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_generate_todays_date
-    assert_equal "030620", @enigma.create_date
+    assert_equal "060620", @enigma.create_date
   end
 
   def test_it_has_default_date
@@ -47,8 +47,21 @@ class EnigmaTest < Minitest::Test
     assert_equal "030620", @enigma.encrypt("hello world")[:date]
   end
 
-  def test_it_has_shift_start_positions
-    expected = {A: 1, B: 2, C: 3, D: 4}
-    assert_equal expected, @enigma.shift
+  def test_it_can_split_key_into_pairs
+    @enigma.encrypt(message, "34753", "030620")
+    expected = [34, 47, 75, 53]
+
+    assert_equal expected, @enigma.split_key
+  end
+
+  def test_it_can_group_key_pairs_by_shift
+    @enigma.encrypt(message, "34753", "030620")
+    expected = {
+              A: 34,
+              B: 47,
+              C: 75,
+              D: 53
+            }
+    assert_equal expected, @enigma.group_keys_by_shift
   end
 end

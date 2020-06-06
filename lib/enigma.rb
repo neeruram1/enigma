@@ -9,7 +9,13 @@ class Enigma
   end
 
   def encrypt(message, key = randomize_key, date = create_date)
+    @key = key
+    @date = date
     {encryption: message, key: key, date: date}
+  end
+
+  def create_date
+    @date = Date.today.strftime("%d%m%y")
   end
 
   def randomize_key
@@ -20,11 +26,18 @@ class Enigma
     @key.join
   end
 
-  def create_date
-    @date = Date.today.strftime("%d%m%y")
+  def split_key
+    char = []
+    @key.each_char {|c| char << c}
+    char.each_cons(2).map {|a,b| (a + b).to_i}
   end
 
-  def shift
-    {A: 1, B: 2, C: 3, D: 4}
+  def group_keys_by_shift
+    @key_pairs = {
+                A: split_key[0],
+                B: split_key[1],
+                C: split_key[2],
+                D: split_key[3]
+              }
   end
 end
