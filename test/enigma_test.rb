@@ -17,19 +17,16 @@ class EnigmaTest < Minitest::Test
     expected1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," "]
     assert_equal expected, enigma.numbers
     assert_equal expected1, enigma.alphabet
-    assert_equal ({}), enigma.data
   end
 
   def test_it_can_encrypt
     enigma = Enigma.new
-    message = mock("encrypted message")
     expected = {
-              encryption: message,
+              encryption: "keder ohulw",
               key: "02715",
               date: "040895"
             }
-
-    assert_equal expected, enigma.encrypt(message, "02715", "040895")
+    assert_equal expected, enigma.encrypt("hello world", "02715", "040895")
   end
 
   def test_it_can_randomize_key_default_key
@@ -37,7 +34,7 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:randomize_key).returns("34573")
     enigma.encrypt("hello world")
 
-    assert_equal "34573", enigma.data[:key]
+    assert_equal "34573", enigma.key
   end
 
   def test_it_can_generate_todays_date
@@ -50,12 +47,12 @@ class EnigmaTest < Minitest::Test
     enigma.stubs(:create_date).returns("030620")
     enigma.encrypt("hello world")
 
-    assert_equal "030620", enigma.data[:date]
+    assert_equal "030620", enigma.date
   end
 
   def test_it_can_split_key_into_pairs
     enigma = Enigma.new
-    enigma.encrypt(message, "34753", "030620")
+    enigma.encrypt("HELLO WORLD", "34753", "030620")
     expected = [34, 47, 75, 53]
 
     assert_equal expected, enigma.split_key
@@ -63,7 +60,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_group_key_pairs_by_shift
     enigma = Enigma.new
-    enigma.encrypt(message, "34753", "030620")
+    enigma.encrypt("HELLO WORLD", "34753", "030620")
     expected = {
               A: 34,
               B: 47,
@@ -76,14 +73,14 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_square_date
     enigma = Enigma.new
-    enigma.encrypt(message, "34753", "030620")
+    enigma.encrypt("HELLO WORLD", "34753", "030620")
 
     assert_equal "937584400", enigma.square_date
   end
 
   def test_it_can_return_last_four_digits_offset
     enigma = Enigma.new
-    enigma.encrypt(message, "34753", "030620")
+    enigma.encrypt("HELLO WORLD", "34753", "030620")
     expected = [4, 4, 0, 0]
 
     assert_equal expected, enigma.split_offset
@@ -91,7 +88,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_group_offsets_by_shift
     enigma = Enigma.new
-    enigma.encrypt(message, "34753", "030620")
+    enigma.encrypt("HELLO WORLD", "34753", "030620")
     expected = {
               A: 4,
               B: 4,
@@ -104,7 +101,7 @@ class EnigmaTest < Minitest::Test
 
   def test_it_can_create_shift_values
     enigma = Enigma.new
-    enigma.encrypt(message, "34753", "030620")
+    enigma.encrypt("HELLO WORLD", "34753", "030620")
     expected = {
               A: 38,
               B: 51,

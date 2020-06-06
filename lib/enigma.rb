@@ -3,15 +3,18 @@ class Enigma
   attr_reader :numbers,
               :alphabet,
               :key,
-              :data
+              :date,
+              :message
   def initialize
     @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @alphabet = ("a".."z").to_a << " "
-    @data = {}
   end
 
   def encrypt(message, key = randomize_key, date = create_date)
-    @data = {encryption: message, key: key, date: date}
+    @message = message
+    @key = key
+    @date = date
+    {encryption: encode, key: @key, date: @date}
   end
 
 #offsets method
@@ -21,7 +24,7 @@ class Enigma
 
 #offsets method
   def square_date
-    @data[:date].to_i.pow(2).to_s
+    @date.to_i.pow(2).to_s
   end
 
 #offsets method
@@ -52,7 +55,7 @@ class Enigma
 
 #key method
   def split_key
-    characters = @data[:key].chars
+    characters = @key.chars
     characters.each_cons(2).map {|a,b| (a + b).to_i}
   end
 
@@ -75,7 +78,7 @@ class Enigma
 
 #encrypt method
   def split_message
-    @data[:encryption].chars
+    @message.chars
   end
 
   def start_positions
@@ -99,18 +102,18 @@ class Enigma
     d_rotated_alphabet = @alphabet.rotate(shift_values[:D])
     d_shift_alpha = Hash[@alphabet.zip d_rotated_alphabet]
 
-    message = start_positions
-    message.map do |position, character|
-      if @alphabet.include?(message[position]) && (position + 4) % 4 == 1
-        message[position] = a_shift_alpha[character]
-      elsif @alphabet.include?(message[position]) && (position + 4) % 4 == 2
-        message[position] = b_shift_alpha[character]
-      elsif @alphabet.include?(message[position]) && (position + 4) % 4 == 3
-        message[position] = c_shift_alpha[character]
-      elsif @alphabet.include?(message[position]) && (position + 4) % 4 == 0
-        message[position] = d_shift_alpha[character]
+    message_chars = start_positions
+    message_chars.map do |position, character|
+      if @alphabet.include?(message_chars[position]) && (position + 4) % 4 == 1
+        message_chars[position] = a_shift_alpha[character]
+      elsif @alphabet.include?(message_chars[position]) && (position + 4) % 4 == 2
+        message_chars[position] = b_shift_alpha[character]
+      elsif @alphabet.include?(message_chars[position]) && (position + 4) % 4 == 3
+        message_chars[position] = c_shift_alpha[character]
+      elsif @alphabet.include?(message_chars[position]) && (position + 4) % 4 == 0
+        message_chars[position] = d_shift_alpha[character]
       end
     end
-    message.values.join
+    message_chars.values.join
   end
 end
