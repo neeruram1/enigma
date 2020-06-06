@@ -39,7 +39,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_can_generate_todays_date
-    assert_equal "030620", @enigma.create_date
+    assert_equal "060620", @enigma.create_date
   end
 
   def test_it_has_default_date
@@ -50,5 +50,11 @@ class EnigmaTest < Minitest::Test
   def test_it_has_shift_start_positions
     expected = {A: 1, B: 2, C: 3, D: 4}
     assert_equal expected, @enigma.shift
+  end
+
+  def test_it_can_convert_key_to_integer
+    @enigma.encrypt(message, "34753", "030620")
+
+    assert_equal 34753, @enigma.convert_key_to_integer
   end
 end

@@ -9,6 +9,8 @@ class Enigma
   end
 
   def encrypt(message, key = randomize_key, date = create_date)
+    @key = key
+    @date = date
     {encryption: message, key: key, date: date}
   end
 
@@ -18,6 +20,10 @@ class Enigma
       @key << @numbers.sample
     end
     @key.join
+  end
+
+  def convert_key_to_integer
+    @key.to_i
   end
 
   def create_date
