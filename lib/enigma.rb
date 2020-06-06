@@ -2,33 +2,33 @@ require 'date'
 class Enigma
   attr_reader :numbers,
               :alphabet,
-              :key
+              :key,
+              :data
   def initialize
     @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @alphabet = ("a".."z").to_a << " "
+    @data = {}
   end
 
   def encrypt(message, key = randomize_key, date = create_date)
-    @key = key
-    @date = date
-    {encryption: message, key: key, date: date}
+    @data = {encryption: message, key: key, date: date}
   end
 
 #offsets method
   def create_date
-    @date = Date.today.strftime("%d%m%y")
+    date = Date.today.strftime("%d%m%y")
   end
 
 #offsets method
   def square_date
-    @date.to_i.pow(2).to_s
+    @data[:date].to_i.pow(2).to_s
   end
 
 #offsets method
   def split_offset
-    char = []
-    square_date.each_char {|c| char << c.to_i}
-    char.last(4)
+    characters = []
+    square_date.chars {|c| characters << c.to_i}
+    characters.last(4)
   end
 
 #offsets method
@@ -43,18 +43,17 @@ class Enigma
 
 #key method
   def randomize_key
-    @key = []
+    key = []
     5.times do
-      @key << @numbers.sample
+      key << @numbers.sample
     end
-    @key.join
+    key.join
   end
 
 #key method
   def split_key
-    char = []
-    @key.each_char {|c| char << c}
-    char.each_cons(2).map {|a,b| (a + b).to_i}
+    characters = @data[:key].chars
+    characters.each_cons(2).map {|a,b| (a + b).to_i}
   end
 
 #key method
@@ -69,8 +68,22 @@ class Enigma
 
   #shift method
   def shift_values
-    @shifts = keys_by_shift.merge(offsets_by_shift) do |shift,key_value,offset_value| 
+    @shifts = keys_by_shift.merge(offsets_by_shift) do |shift,key_value,offset_value|
       key_value + offset_value
     end
   end
+
+#encrypt method
+  def split_message
+    @data[:encryption].chars
+  end
+
+  def start_positions
+    positions = {}
+    split_message.each_with_index do |character, index|
+      positions[index + 1] = character.downcase
+    end
+    positions
+  end
+
 end

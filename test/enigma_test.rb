@@ -19,6 +19,7 @@ class EnigmaTest < Minitest::Test
     expected1 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"," "]
     assert_equal expected, @enigma.numbers
     assert_equal expected1, @enigma.alphabet
+    assert_equal ({}), @enigma.data
   end
 
   def test_it_can_encrypt
@@ -28,13 +29,15 @@ class EnigmaTest < Minitest::Test
               key: "02715",
               date: "040895"
             }
+
     assert_equal expected, @enigma.encrypt(message, "02715", "040895")
   end
 
   def test_it_can_randomize_key_default_key
     @enigma.stubs(:randomize_key).returns("34573")
+    @enigma.encrypt("hello world")
 
-    assert_equal "34573", @enigma.encrypt("hello world")[:key]
+    assert_equal "34573", @enigma.data[:key]
   end
 
   def test_it_can_generate_todays_date
@@ -43,7 +46,9 @@ class EnigmaTest < Minitest::Test
 
   def test_it_has_default_date
     @enigma.stubs(:create_date).returns("030620")
-    assert_equal "030620", @enigma.encrypt("hello world")[:date]
+    @enigma.encrypt("hello world")
+
+    assert_equal "030620", @enigma.data[:date]
   end
 
   def test_it_can_split_key_into_pairs
@@ -61,17 +66,20 @@ class EnigmaTest < Minitest::Test
               C: 75,
               D: 53
             }
+
     assert_equal expected, @enigma.keys_by_shift
   end
 
   def test_it_can_square_date
     @enigma.encrypt(message, "34753", "030620")
+
     assert_equal "937584400", @enigma.square_date
   end
 
   def test_it_can_return_last_four_digits_offset
     @enigma.encrypt(message, "34753", "030620")
     expected = [4, 4, 0, 0]
+
     assert_equal expected, @enigma.split_offset
   end
 
@@ -83,6 +91,7 @@ class EnigmaTest < Minitest::Test
               C: 0,
               D: 0
             }
+
     assert_equal expected, @enigma.offsets_by_shift
   end
 
@@ -94,6 +103,58 @@ class EnigmaTest < Minitest::Test
               C: 75,
               D: 53
             }
+
     assert_equal expected, @enigma.shift_values
+  end
+
+  def test_it_can_split_message_characters
+    @enigma.encrypt("hello world", "34753", "030620")
+    expected = ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+
+    assert_equal expected, @enigma.split_message
+  end
+
+  def test_it_can_find_all_start_positions
+    @enigma.encrypt("HELLO WORLD", "02715", "040895")
+    expected = {
+              1 => "h",
+              2 => "e",
+              3 => "l",
+              4 => "l",
+              5 => "o",
+              6 => " ",
+              7 => "w",
+              8 => "o",
+              9 => "r",
+              10 => "l",
+              11 => "d"
+            }
+    assert_equal expected, @enigma.start_positions
+  end
+
+  def test_it_can_assign_shift_value
+    @enigma.encrypt("HELLO WORLD", "02715", "040895")
+    expected = {
+              1 => "h",
+              2 => "e",
+              3 => "l",
+              4 => "l",
+              5 => "o",
+              6 => " ",
+              7 => "w",
+              8 => "o",
+              9 => "r",
+              10 => "l",
+              11 => "d"
+            }
+
+  end
+
+  def test_it_can_encode_characters
+    skip
+    @enigma.encrypt("HELLO WORLD", "02715", "040895")
+    expected = "keder ohulw"
+
+    assert_equal expected, @enigma.encode
   end
 end
