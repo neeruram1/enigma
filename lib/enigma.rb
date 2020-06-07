@@ -17,7 +17,7 @@ class Enigma
     {encryption: encode, key: @key, date: @date}
   end
 
-  def decrypt(message, key, date)
+  def decrypt(message, key, date = create_date)
     @message = message
     @key = key
     @date = date
@@ -121,7 +121,7 @@ class Enigma
         message_chars[position] = d_shift_alpha[character]
       end
     end
-    message_chars.values.join
+    message_chars.values.join.chomp
   end
 
   def decode
@@ -149,6 +149,6 @@ class Enigma
         message_chars[position] = d_shift_alpha[character]
       end
     end
-    message_chars.values.join
+    message_chars.values.join.chomp
   end
 end
