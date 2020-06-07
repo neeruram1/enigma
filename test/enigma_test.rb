@@ -47,11 +47,6 @@ class EnigmaTest < Minitest::Test
     assert_equal "34573", enigma.key
   end
 
-  def test_it_can_generate_todays_date
-    enigma = Enigma.new
-    assert_equal "060620", enigma.create_date
-  end
-
   def test_it_has_default_date
     enigma = Enigma.new
     enigma.stubs(:create_date).returns("030620")
@@ -79,34 +74,6 @@ class EnigmaTest < Minitest::Test
             }
 
     assert_equal expected, enigma.keys_by_shift
-  end
-
-  def test_it_can_square_date
-    enigma = Enigma.new
-    enigma.encrypt("HELLO WORLD", "34753", "030620")
-
-    assert_equal "937584400", enigma.square_date
-  end
-
-  def test_it_can_return_last_four_digits_offset
-    enigma = Enigma.new
-    enigma.encrypt("HELLO WORLD", "34753", "030620")
-    expected = [4, 4, 0, 0]
-
-    assert_equal expected, enigma.split_offset
-  end
-
-  def test_it_can_group_offsets_by_shift
-    enigma = Enigma.new
-    enigma.encrypt("HELLO WORLD", "34753", "030620")
-    expected = {
-              A: 4,
-              B: 4,
-              C: 0,
-              D: 0
-            }
-
-    assert_equal expected, enigma.offsets_by_shift
   end
 
   def test_it_can_create_shift_values

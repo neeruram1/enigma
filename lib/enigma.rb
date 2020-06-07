@@ -24,24 +24,24 @@ class Enigma
     {decryption: decode, key: @key, date: @date}
   end
 
-#offsets method
+#MAKE A MODULE
   def create_date
     Date.today.strftime("%d%m%y")
   end
 
-#offsets method
+#offsets method - MOVED
   def square_date
     @date.to_i.pow(2).to_s
   end
 
-#offsets method
+#offsets method - MOVED
   def split_offset
     characters = []
     square_date.chars {|c| characters << c.to_i}
     characters.last(4)
   end
 
-#offsets method
+#offsets method - MOVED
   def offsets_by_shift
     @offset_pairs = {
                 A: split_offset[0],
