@@ -6,6 +6,7 @@ class Enigma
               :date,
               :message
   def initialize
+    #MAKE MODULE
     @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     @alphabet = ("a".."z").to_a << " "
   end
@@ -51,7 +52,7 @@ class Enigma
               }
   end
 
-#key method
+#key method - MOVED
   def randomize_key
     key = []
     5.times do
@@ -60,13 +61,13 @@ class Enigma
     key.join
   end
 
-#key method
+#key method - MOVED
   def split_key
     characters = @key.chars
     characters.each_cons(2).map {|a,b| (a + b).to_i}
   end
 
-#key method
+#key method - MOVED
   def keys_by_shift
     @key_pairs = {
                 A: split_key[0],
@@ -76,7 +77,7 @@ class Enigma
               }
   end
 
-  #shift method
+  #shift method - MOVED
   def shift_values
     @shifts = keys_by_shift.merge(offsets_by_shift) do |shift,key_value,offset_value|
       key_value + offset_value
