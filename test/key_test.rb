@@ -7,7 +7,7 @@ require 'pry'
 
 class KeyTest < Minitest::Test
   def setup
-    @key = Key.new
+    @key = Key.new("34753")
   end
 
   def test_it_exists
@@ -15,24 +15,21 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], @key.numbers
-    assert_equal ({}), @key.key_pairs
+    assert_equal "34753", @key.key
   end
 
   def test_it_can_randomize_key
-    @key.stubs(:randomize_key).returns("34753")
-    assert_equal "34753", @key.randomize_key
+    @key.stubs(:randomize_key).returns("12345")
+    assert_equal "12345", @key.randomize_key
   end
 
   def test_it_can_split_key_into_pairs
-    @key.stubs(:randomize_key).returns("34753")
     expected = [34, 47, 75, 53]
 
     assert_equal expected, @key.split_key
   end
 
   def test_it_can_group_key_pairs_by_shift
-    @key.stubs(:randomize_key).returns("34753")
     expected = {
               A: 34,
               B: 47,

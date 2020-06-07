@@ -9,9 +9,9 @@ require 'pry'
 
 class ShiftTest < Minitest::Test
   def setup
-    @shift = Shift.new
-    @key = Key.new
-    @offset = Offset.new
+    @key = Key.new("02715")
+    @offset = Offset.new("040895")
+    @shift = Shift.new(@key, @offset)
   end
 
   def test_it_exists
@@ -19,22 +19,16 @@ class ShiftTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    @shift.key.stubs(:randomize_key).returns("34753")
-    @shift.offset.stubs(:date).returns("030620")
-    expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-
-    assert_equal expected, @shift.key.numbers
-    assert_equal "030620", @shift.offset.date
+    assert_equal @key, @shift.key
+    assert_equal @offset, @shift.offset
   end
 
   def test_it_can_create_shift_values
-    @shift.key.stubs(:randomize_key).returns("34753")
-    @shift.offset.stubs(:date).returns("030620")
     expected = {
-              A: 38,
-              B: 51,
-              C: 75,
-              D: 53
+              A: 3,
+              B: 27,
+              C: 73,
+              D: 20
             }
     assert_equal expected, @shift.shift_values
   end

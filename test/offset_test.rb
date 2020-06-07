@@ -17,7 +17,6 @@ class OffsetTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal "070620", @offset.date
-    assert_equal ({}), @offset_pairs
   end
 
   def test_it_can_square_date
@@ -37,6 +36,5 @@ class OffsetTest < Minitest::Test
               D: 0
             }
     assert_equal expected, @offset.offsets_by_shift
-    binding.pry
   end
 end
