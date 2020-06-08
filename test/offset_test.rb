@@ -8,14 +8,21 @@ require 'pry'
 class OffsetTest < Minitest::Test
   def setup
     @offset = Offset.new("040895")
+    @offset1 = Offset.new
   end
 
   def test_it_exists
     assert_instance_of Offset, @offset
   end
 
+  def test_it_can_generate_todays_Date
+    Offset.expects(:today_date).returns("070820")
+    assert_equal "070820", Offset.today_date
+  end
+
   def test_it_has_attributes
     assert_equal "040895", @offset.date
+    assert_equal String, @offset1.date.class
   end
 
   def test_it_can_square_date
