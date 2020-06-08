@@ -1,6 +1,6 @@
-require_relative 'coder'
+require_relative 'code'
 
-class Encryption < Coder
+class Encryption < Code
 
   def encode
     rotate_message_encode

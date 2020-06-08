@@ -1,6 +1,6 @@
 require_relative 'shift'
 
-class Coder
+class Code
   attr_reader :shift,
               :message
   def initialize(shift, message)
@@ -67,7 +67,7 @@ class Coder
         message_position[position] = forward_shifted_alphabet(dshift)[character]
       end
     end
-    message_position.values.join.chomp
+    message_position.values.join
   end
 
   def rotate_message_decode
@@ -88,6 +88,6 @@ class Coder
         message_position[position] = forward_shifted_alphabet(dshift)[character]
       end
     end
-    message_position.values.join.chomp
+    message_position.values.join
   end
 end
