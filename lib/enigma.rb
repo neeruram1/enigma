@@ -2,6 +2,9 @@ require 'date'
 require_relative 'shift'
 require_relative 'key'
 require_relative 'offset'
+require_relative 'encryption'
+require_relative 'decryption'
+require_relative 'shift'
 
 class Enigma
   attr_reader :numbers,
@@ -11,10 +14,6 @@ class Enigma
               :message,
               :shift
 
-  def initialize
-    #MAKE MODULE
-    @numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
-  end
 
   def encrypt(message, key = Key.new.randomize_key, date = Offset.new.date)
     @message = message
