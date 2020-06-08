@@ -2,15 +2,12 @@ require_relative 'shift'
 
 class Code
   attr_reader :shift,
-              :message
+              :message,
+              :alphabet
   def initialize(shift, message)
     @shift = shift
     @message = message
     @alphabet = ("a".."z").to_a << " "
-    @ashift = @shift.shift_values[:A]
-    @bshift = @shift.shift_values[:B]
-    @cshift = @shift.shift_values[:C]
-    @dshift = @shift.shift_values[:D]
   end
 
   def start_positions
@@ -25,11 +22,7 @@ class Code
     @alphabet.rotate(shift_values)
   end
 
-  def forward_shifted_alphabet(shift_values)
-    Hash[@alphabet.zip rotate(shift_values)]
-  end
-
-  def backward_shifted_alphabet(shift_values)
+  def shifted_alphabet(shift_values)
     Hash[@alphabet.zip rotate(shift_values)]
   end
 
@@ -58,13 +51,13 @@ class Code
     message_position = start_positions
     message_position.map do |position, character|
       if included_in_a?(character, position)
-        message_position[position] = forward_shifted_alphabet(ashift)[character]
+        message_position[position] = shifted_alphabet(ashift)[character]
       elsif included_in_b?(character, position)
-        message_position[position] = forward_shifted_alphabet(bshift)[character]
+        message_position[position] = shifted_alphabet(bshift)[character]
       elsif included_in_c?(character, position)
-        message_position[position] = forward_shifted_alphabet(cshift)[character]
+        message_position[position] = shifted_alphabet(cshift)[character]
       elsif included_in_d?(character, position)
-        message_position[position] = forward_shifted_alphabet(dshift)[character]
+        message_position[position] = shifted_alphabet(dshift)[character]
       end
     end
     message_position.values.join
@@ -79,13 +72,13 @@ class Code
     message_position = start_positions
     message_position.map do |position, character|
       if included_in_a?(character, position)
-        message_position[position] = forward_shifted_alphabet(ashift)[character]
+        message_position[position] = shifted_alphabet(ashift)[character]
       elsif included_in_b?(character, position)
-        message_position[position] = forward_shifted_alphabet(bshift)[character]
+        message_position[position] = shifted_alphabet(bshift)[character]
       elsif included_in_c?(character, position)
-        message_position[position] = forward_shifted_alphabet(cshift)[character]
+        message_position[position] = shifted_alphabet(cshift)[character]
       elsif included_in_d?(character, position)
-        message_position[position] = forward_shifted_alphabet(dshift)[character]
+        message_position[position] = shifted_alphabet(dshift)[character]
       end
     end
     message_position.values.join
