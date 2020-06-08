@@ -28,7 +28,4 @@ class DecryptionTest < Minitest::Test
     expected = "hello world"
     assert_equal expected, @decryption.decode
   end
-
-
-
 end

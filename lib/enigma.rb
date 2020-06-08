@@ -6,11 +6,10 @@ require_relative 'encryption'
 require_relative 'decryption'
 require_relative 'shift'
 
-
-
 class Enigma
   attr_reader :encrypt_data,
               :decrypt_data
+
   def initialize
     @encrypt_data = {}
     @decrypt_data = {}

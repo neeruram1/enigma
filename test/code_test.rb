@@ -68,24 +68,4 @@ class CodeTest < Minitest::Test
   def test_it_is_included_in_d
     assert_equal false, @code.included_in_d?(@code.start_positions.first[1], @code.start_positions.first[0])
   end
-
-  def test_it_can_encode_message
-    expected = "keder ohulw"
-    assert_equal expected, @code.rotate_message_encode
-  end
-
-  def test_it_can_encode_with_special_characters
-    expected = "keder ohulw!"
-    assert_equal expected, @code1.rotate_message_encode
-  end
-
-  def test_it_can_encode_message
-    expected = "keder ohulw"
-    assert_equal expected, @code.rotate_message_encode
-  end
-
-  def test_it_can_decode_message
-    expected = "hello world"
-    assert_equal expected, @code2.rotate_message_decode
-  end
 end
