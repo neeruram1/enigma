@@ -9,3 +9,14 @@ I also created a new parent class called Code and created two new children class
 Once I split up all the functionality the Enigma class became responsible for the output of the encryption and decryption, as well as outputting the generated key and date. 
 
 The encrypt.rb file and the decrypt.rb file allow for the command line interface. When encrypting, the command line interface has the option to take in a user generated key argument. It's limited to 5 digits - the program will pad it with leading zeros if less than 5 digits and will only us the first 5 digits if the user has entered in too many digits. 
+
+## Self Assessment:
+**Functionality** - Meets expectations
+
+**Object Oriented Programming** - Above expectations
+
+**Ruby Conventions and Mechanics** - Meets expectations
+
+**Test Driven Development** - Above expectations
+
+**Version Control** - Meets expectations
