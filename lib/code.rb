@@ -4,6 +4,7 @@ class Code
   attr_reader :shift,
               :message,
               :alphabet
+              
   def initialize(shift, message)
     @shift = shift
     @message = message
